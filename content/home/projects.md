@@ -21,21 +21,26 @@ subtitle = ""
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 0
   
-  # [[content.filter_button]]
-  #   name = "All"
-  #   tag = "*"
+    [[content.filter_button]]
+      name = "Deep Learning"
+      tag = "*"
+    
+    [[content.filter_button]]
+      name = "Computer Vision"
+      tag = "Computer Vision"
   
-  # [[content.filter_button]]
-  #   name = "Deep Learning"
-  #   tag = "Deep Learning"
-  
-  # [[content.filter_button]]
-  #   name = "Other"
-  #   tag = "Demo"
+    [[content.filter_button]]
+      name = "Natural Language Processing"
+      tag = "Natural Language Processing"
+      
+    [[content.filter_button]]
+      name = "Biomedical Image Processing"
+      tag = "Biomedical Image Processing"
+      
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
   # Toggle between the various page layout types.
   #   1 = List

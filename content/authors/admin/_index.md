@@ -22,7 +22,7 @@ bio: I work as a software engineer and participate in data science competitions
 
 interests:
 - Deep Learning
-- Artificial Intelligence
+- Computer Vision
 - Natural Language Processing
 - Computational Creativity
 
@@ -65,5 +65,5 @@ user_groups:
 - Visitors
 ---
 
-I am Rafid Abyaad. I work as a Software Engineer at Samsung Research&Development Institute, Bangladesh. I also participate in data science competitions quite often. My research 
-interests lie in designing Intelligent and Creative deep models.
+I am Rafid Abyaad. I work as a Software Engineer at Samsung R&D Institute, Bangladesh. I also participate in data science competitions quite often. My research 
+interests lie in designing intelligent and creative deep models.
