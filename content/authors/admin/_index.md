@@ -28,9 +28,10 @@ interests:
 
 education:
   courses:
-  - course: BSc Engineering
+  - course: B.Sc. Engineering
     institution: Islamic University of Technology
-    year: 2017
+    major : Computer Science and Engineering
+    year: 2014 - 2017
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
