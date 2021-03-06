@@ -10,7 +10,7 @@ summary = "Recursion Cellular Image Classification"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["Biomedical Image Processing" , "Computer Vision"]
+tags = ["Deep Learning" , "Computer Vision"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""

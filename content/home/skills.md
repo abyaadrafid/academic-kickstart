@@ -17,8 +17,8 @@ subtitle = ""
 [[feature]]
   icon = "fas fa-brain"
   icon_pack = "fas"
-  name = "Neural Networks <br/>Deep Learning"
-  description = ""
+  name = "Pytorch <br/> Chromium"
+  description = "Development frameworks"
   
 [[feature]]
   icon = "fas fa-code"

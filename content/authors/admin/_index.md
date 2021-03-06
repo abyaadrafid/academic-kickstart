@@ -10,28 +10,29 @@ authors:
 superuser: true
 
 # Role/position
-role: Software Engineer and Deep Learning Practitioner
+role: Masters Student
 
 # Organizations/Affiliations
 organizations:
-- name: Samsung R&D Institute
-  url: ""
+- name : Technical University of Munich
 
 # Short bio (displayed in user profile at end of posts)
 bio: I work as a software engineer and participate in data science competitions
 
 interests:
 - Deep Learning
-- Computer Vision
+- Reinforcement Learning
 - Natural Language Processing
-- Computational Creativity
 
 education:
   courses:
-  - course: B.Sc. Engineering
+  - course: Master of Science in Informatics
+    institution: Technical University of Munich
+    year: 2022
+  
+  - course: B.Sc. Engineering in Computer Science and Engineering 
     institution: Islamic University of Technology
-    major : Computer Science and Engineering
-    year: 2014 - 2017
+    year: 2017
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -40,7 +41,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:rafiabyaad@iut-dhaka.edu'  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:rafid.abyaad@tum.de'  # For a direct email link, use "mailto:test@example.org".
 - icon: kaggle
   icon_pack: fab
   link: https://kaggle.com/abyaadrafid
@@ -66,5 +67,4 @@ user_groups:
 - Visitors
 ---
 
-I am Rafid Abyaad. I work as a Software Engineer at Samsung R&D Institute, Bangladesh. I also participate in data science competitions quite often. My research 
-interests lie in designing intelligent and creative deep models.
+I am a masters student at [TUM](https://in.tum.de), focusing on Machine Learning, Robotics and Software Engineering. My research interests lie in designing intelligent deep models and applying them in various paradigms. I have a keen interest in using deep learning to improve reinforcement learning systems. 

@@ -1,16 +1,16 @@
 +++
 # Project title.
-title = "SIIM-ACR Pneumothorax Segmentation"
+title = "Double Deep Q Learning"
 
 # Date this page was created.
-date = 2019-12-25T00:00:00
+date = 2020-05-25T00:00:00
 
 # Project summary to display on homepage.
-summary = "SIIM-ACR Pneumothorax Segmentation"
+summary = "Implementation of Double Deep Q Learning to solve OpenAI LunarLander environment"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["Deep Learning" , "Computer Vision"]
+tags = ["Deep Learning" , "Reinforcement Learning"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""
@@ -31,6 +31,7 @@ url_code = ""
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
+ 
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your project's folder. 
@@ -42,7 +43,6 @@ url_code = ""
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "TopLeft"
 +++
-
-<form action="https://github.com/abyaadrafid/SIIM-ACR-Pneumothorax-Segmentation">
+<form action="https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Deep%20Q%20Learning/Double_Deep_Q_Learning.ipynb">
     <input type="submit" formtarget = "_blank" value="Github Repo" />
 </form>

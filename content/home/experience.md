@@ -23,7 +23,7 @@ date_format = "Jan 2006"
   company_url = "https://research.samsung.com/srbd"
   location = "Dhaka"
   date_start = "2018-02-01"
-  date_end = ""
+  date_end = "2021-05-01"
   description = """
   Contributions :
   
