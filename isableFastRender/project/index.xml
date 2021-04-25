@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects | Homepage | Rafid</title>
+    <link>http://localhost:1313/project/</link>
+      <atom:link href="http://localhost:1313/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 25 May 2020 00:00:00 +0600</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/img/icon-192.png</url>
+      <title>Projects</title>
+      <link>http://localhost:1313/project/</link>
+    </image>
+    
+    <item>
+      <title>Advantage Actor Critic</title>
+      <link>http://localhost:1313/project/a3c/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/a3c/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Policy%20Gradients/Advantage_Actor_Critic.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Deep Q Learning</title>
+      <link>http://localhost:1313/project/dqn/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/dqn/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Deep%20Q%20Learning/Deep_Q_Learning.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Double Deep Q Learning</title>
+      <link>http://localhost:1313/project/ddqn/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/ddqn/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Deep%20Q%20Learning/Double_Deep_Q_Learning.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dueling Deep Q Learning</title>
+      <link>http://localhost:1313/project/duellingdqn/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/duellingdqn/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Deep%20Q%20Learning/Dueling_Deep_Q_Learning.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dueling Double Deep Q Learning</title>
+      <link>http://localhost:1313/project/d3qn/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/d3qn/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Deep%20Q%20Learning/Dueling_Double_Deep_Q_Learning.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Policy Gradient (REINFORCE)</title>
+      <link>http://localhost:1313/project/reinforce/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/reinforce/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Policy%20Gradients/Vanilla_Policy_Gradient%5BREINFORCE%5D.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Soft Actor Critic</title>
+      <link>http://localhost:1313/project/sac/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/sac/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Policy%20Gradients/Soft_Actor_Critic.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Value Actor Critic</title>
+      <link>http://localhost:1313/project/valueac/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/valueac/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Deep-Reinforcement-Learning/blob/master/Policy%20Gradients/Value_Actor_Critic.ipynb&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Aerial Cactus Identification</title>
+      <link>http://localhost:1313/project/acic/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/acic/</guid>
+      <description>&lt;p&gt;This was one my of very first competitions. While doing &lt;a href=&#34;https://course.fast.ai/&#34;&gt;Practical Deep Learning for Coders&lt;/a&gt;, this competition provided a good source of practise. It was a binary classification problem. The goal for this competition was to determine whether the given satellite image contained a columnur cactus.&lt;/p&gt;
+&lt;p&gt;I used this dataset for two purposes :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;To implement and test &lt;a href=&#34;https://arxiv.org/pdf/1801.07698.pdf&#34;&gt;ArcFace&lt;/a&gt; using pytorch.&lt;/li&gt;
+&lt;li&gt;To get placed into a high LeaderBoard position in the competition using FastAI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;approach&#34;&gt;Approach&lt;/h2&gt;
+&lt;h3 id=&#34;eda&#34;&gt;EDA&lt;/h3&gt;
+&lt;p&gt;According to the dataset details, the images were taken from the air. The images are low-res, some of them rotated to arbitrary angles and some zoomed. From visual inspection, the cacti are somewhat easy to spot because of their unique texture and stick-like shape. The class imbalance is not severe, can be handled by data augmentation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;data_print.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;data-split-and-transforms&#34;&gt;Data split and Transforms&lt;/h3&gt;
+&lt;h4 id=&#34;split&#34;&gt;Split&lt;/h4&gt;
+&lt;p&gt;As the class imbalance was not servere, the data could be split into train/valid set at random.&lt;/p&gt;
+&lt;h4 id=&#34;transforms&#34;&gt;Transforms&lt;/h4&gt;
+&lt;p&gt;Following Transforms were applied with 75% probability to augment the data, then the images were resized to 128*128. Test time augmentation was not applied.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Horizontal Flip&lt;/li&gt;
+&lt;li&gt;Vertical Flip&lt;/li&gt;
+&lt;li&gt;Left and Right rotation upto 10°&lt;/li&gt;
+&lt;li&gt;Upto 110% zoom&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;hyperparameters&#34;&gt;Hyperparameters&lt;/h3&gt;
+&lt;h4 id=&#34;arcface&#34;&gt;ArcFace&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;s = 64&lt;/li&gt;
+&lt;li&gt;m = 0.0&lt;/li&gt;
+&lt;li&gt;Adam Optimizer with fixed lr = 1e-3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;competition-classifiers&#34;&gt;Competition Classifiers&lt;/h4&gt;
+&lt;h5 id=&#34;densenet169&#34;&gt;Densenet169&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Frozen model, Adam optimizer with maximum lr = 7.5e-3.&lt;/li&gt;
+&lt;li&gt;CyclirLR scheduler&lt;/li&gt;
+&lt;li&gt;Unfrozen model, Adam optimizer with maximum lr = 1e-6.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;resnet101&#34;&gt;Resnet101&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Frozen model, Adam optimizer with maximum lr = 9e-3.&lt;/li&gt;
+&lt;li&gt;CyclirLR scheduler&lt;/li&gt;
+&lt;li&gt;Unfrozen model, Adam optimizer with maximum lr = 1e-6.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;model-performance&#34;&gt;Model Performance&lt;/h3&gt;
+&lt;p&gt;I used DenseNet169 and Resnet101 for Leaderboard and ArcFace for research purposes.&lt;/p&gt;
+&lt;h3 id=&#34;arcface-1&#34;&gt;ArcFace&lt;/h3&gt;
+&lt;p&gt;ArcFace was applied on the Resnet101 backbone. Implemented from scratch in pytorch. With embedding dimension = 2048 and scale_factor (s) = 64, accuracy follows :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;arcface.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Further experimentation using additional linear layers can boost the results. Then again, this approach is designed for one-shot learning. Worse performance in Binary Classification is quite understandable.&lt;/p&gt;
+&lt;h4 id=&#34;densenet169-1&#34;&gt;DenseNet169&lt;/h4&gt;
+&lt;p&gt;Densenet169 needs more time to converge because of its enormous size and paramters.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;epoch&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;train_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;valid_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;error_rate&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.059754&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.004154&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.062731&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000837&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.019187&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.003954&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.009922&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000457&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.004491&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000055&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;resnet101-1&#34;&gt;Resnet101&lt;/h4&gt;
+&lt;p&gt;Resnet101 needed less time to converge.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;epoch&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;train_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;valid_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;error_rate&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.063169&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.033260&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.011429&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.988571&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:17&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.034835&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002770&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.024171&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002123&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.014281&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.006416&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.005714&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.994286&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:14&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.006923&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002465&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;competition-standings&#34;&gt;Competition Standings&lt;/h2&gt;
+&lt;p&gt;My models acheived perfect accuracy score in the public leaderboard.&lt;/p&gt;
+&lt;form action=&#34;https://github.com/abyaadrafid/Aerial-Cactus-Identification&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>APTOS Blindness Detection</title>
+      <link>http://localhost:1313/project/aptos/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/aptos/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/APTOS-Blindness-Detection&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Computer Vision 101</title>
+      <link>http://localhost:1313/project/f360/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/f360/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Fruits-360&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Facial Expression Recognition</title>
+      <link>http://localhost:1313/project/ferm/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/ferm/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Face-Expression-Recognition&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Quora Insincere Questions Classification</title>
+      <link>http://localhost:1313/project/qiqc/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/qiqc/</guid>
+      <description>&lt;p&gt;The problem for this competition was text binary classification. The goal of this competition was to develop a model that can flag potentially toxic/insincere questions. Being a kernel-only competition, models available memory and execution time was limited for submissions. I developed a model and submitted it to the competition after it had ended. The submissions placed me at :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Public LB  : Top 50&lt;/li&gt;
+&lt;li&gt;Private LB : Top 100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;QuoraDiagram.jpeg&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;aproach&#34;&gt;Aproach&lt;/h2&gt;
+&lt;h3 id=&#34;eda&#34;&gt;EDA&lt;/h3&gt;
+&lt;p&gt;Initial EDA of the data revealed the dataset to be very imbalanced. Around 96% of the data was from one class and the rest from the other. So accuracy as a metric was useless in this particular competition. The evaluation criteria was to maximized F-score, rightly so.&lt;/p&gt;
+&lt;h3 id=&#34;text-preprocessing-and-loading&#34;&gt;Text Preprocessing and Loading&lt;/h3&gt;
+&lt;p&gt;The competition provided word embedding files. To use the word embeddings, I needed to make sure that word coverage is as much as possible. That meant I needed to fix word misspellings and typos. Glove and Paragram word embeddings do not include many punctuations present in the dataset, so I needed to remove them as well.&lt;/p&gt;
+&lt;h4 id=&#34;processing-steps&#34;&gt;Processing Steps&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Cleaning Text from numbers and Punctuations&lt;/li&gt;
+&lt;li&gt;Replacing typical misspellings and typos&lt;/li&gt;
+&lt;li&gt;Filling blank questions with special tokens&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;crafting-meta-features&#34;&gt;Crafting Meta Features&lt;/h4&gt;
+&lt;p&gt;Based on some EDA, these features are extracted from the train data :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Total length&lt;/li&gt;
+&lt;li&gt;Capitals&lt;/li&gt;
+&lt;li&gt;Ratio of capitals and length&lt;/li&gt;
+&lt;li&gt;Number of words&lt;/li&gt;
+&lt;li&gt;Number of unique words&lt;/li&gt;
+&lt;li&gt;Ratio of unique words and total words&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;tokenization&#34;&gt;Tokenization&lt;/h4&gt;
+&lt;p&gt;I used keras tokenizer. All out of vocabulary words will be replaced with special &amp;lsquo;xxunk&amp;rsquo; token. Tokenizer is fit on the train data and used to make sequence of texts. Then the sequences are padded so all of them have the same length. Longer sequences are truncated and shorter ones are padded.&lt;/p&gt;
+&lt;h4 id=&#34;scaling-statistical-features&#34;&gt;Scaling Statistical Features&lt;/h4&gt;
+&lt;p&gt;Calculated Statistical Features will have to be scaled before putting through a neuralnet.&lt;/p&gt;
+&lt;p&gt;As because these features have different ranges for values, some features may produce vanishing gradients. For example number of words will be, on average, a way larger value than number of unique words. So, these feaures are scaled using a standard scaler.&lt;/p&gt;
+&lt;h3 id=&#34;loading-embeddings&#34;&gt;Loading Embeddings&lt;/h3&gt;
+&lt;p&gt;I have used paragram and glove embeddings in the model. As these word embeddings were not trained in exactly the same system, some useful information may be lost if a weighted average is used. That is why, I have concatenated them into a num_words * (embedding_dim * num_embedding) matrix.&lt;/p&gt;
+&lt;p&gt;Using more embeddings may end up giving more generalization but these models are quite memory intensive and used all my ram. So I couldn&#39;t use more than two of them.&lt;/p&gt;
+&lt;h3 id=&#34;model-definition&#34;&gt;Model Definition&lt;/h3&gt;
+&lt;h4 id=&#34;modules&#34;&gt;Modules&lt;/h4&gt;
+&lt;p&gt;Following Modules contruct the model :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Embedding and Dropout&lt;/li&gt;
+&lt;li&gt;LSTM+GRU backbone&lt;/li&gt;
+&lt;li&gt;Attention Block&lt;/li&gt;
+&lt;li&gt;Extractor/ Merge Layer&lt;/li&gt;
+&lt;li&gt;Output/ Head&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;embedding-and-dropout&#34;&gt;Embedding and Dropout&lt;/h4&gt;
+&lt;p&gt;This layer takes truncated sequence of tokenized texts as input and provides a 2d array as output.
+In my case I limited 120000 as the maximum number of unique features to use. A dropout of 10% was applied. This module returns an array of size (120000 * 300 * 2)&lt;/p&gt;
+&lt;h4 id=&#34;lstmgru-and-attention-backbone&#34;&gt;LSTM+GRU and Attention Backbone&lt;/h4&gt;
+&lt;p&gt;The main body of the model consists of bidirectional LSTM and GRU (128).
+The body returns LSTM+GRU outputs and Attention-transformed LSTM+GRU outputs.&lt;/p&gt;
+&lt;h4 id=&#34;extractor-merge&#34;&gt;Extractor/ Merge&lt;/h4&gt;
+&lt;p&gt;This layer serves as the feature extractor for lstm, gru outputs and statistical Meta features.
+Conv1d is applied on lstm output, which goes into a maxpool. GRU output is sent through avgpool. Statistical Features are put through a Linear layer.&lt;/p&gt;
+&lt;h4 id=&#34;output-layer&#34;&gt;Output Layer&lt;/h4&gt;
+&lt;p&gt;This layer consists of a dropout, a relu and a batchnorm layer, sandwiched between two linear layers. The last linear layer provides the output of the model as a score for the input.&lt;/p&gt;
+&lt;h3 id=&#34;complete-model&#34;&gt;Complete Model&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;First input is sent through embedding layer, returning feature vectors.&lt;/li&gt;
+&lt;li&gt;Embedding output is then passed to the Body of the model.&lt;/li&gt;
+&lt;li&gt;Extractor layer is used to find features from the sequential output of the model backbone.&lt;/li&gt;
+&lt;li&gt;Attention infused lstm+gru outputs and extracted features are concatenated.&lt;/li&gt;
+&lt;li&gt;Concatenated features are sent to the output layer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;training-the-model&#34;&gt;Training the model&lt;/h3&gt;
+&lt;p&gt;The model was trained 5 epochs with Stratified 5-fold-cross-validation. Adam optimizer with 0.01 learning rate and ExponentialLR scheduler was used.&lt;/p&gt;
+&lt;h3 id=&#34;best-threshold-for-classification&#34;&gt;Best threshold for classification&lt;/h3&gt;
+&lt;p&gt;The sigmoid value provided by the model is a continuous representation of insincerity in the inputs. We need a specific threshold to separate the two classes. The best threshold was calculated on the training data, then it was applied on the test data. Based on the threshold of the score, test data was classified and submitted.&lt;/p&gt;
+&lt;form action=&#34;https://github.com/abyaadrafid/Quora-Insincere-Question-Classification&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Recursion Cellular Image Classification</title>
+      <link>http://localhost:1313/project/rcic/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/rcic/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Recursion-Cellular-Image-Classification&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>SIIM-ACR Pneumothorax Segmentation</title>
+      <link>http://localhost:1313/project/siim-acr/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/siim-acr/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/SIIM-ACR-Pneumothorax-Segmentation&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tabular vs Vision Models</title>
+      <link>http://localhost:1313/project/dmnist/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/dmnist/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Digits-MNIST&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -17,11 +17,12 @@ organizations:
 - name : Technical University of Munich
 
 # Short bio (displayed in user profile at end of posts)
-bio: I work as a software engineer and participate in data science competitions
+bio: I am a masters student at TU Munich focusing on Machine learning, Robotics and Formal Methods.
 
 interests:
 - Deep Learning
 - Reinforcement Learning
+- Robotics
 - Natural Language Processing
 
 education:
@@ -67,4 +68,4 @@ user_groups:
 - Visitors
 ---
 
-I am a masters student at [TUM](https://in.tum.de), focusing on Machine Learning, Robotics and Software Engineering. My research interests lie in designing intelligent deep models and applying them in various paradigms. I have a keen interest in using deep learning to improve reinforcement learning systems. 
+I am a masters student at [TUM](https://in.tum.de), focusing on Machine Learning, Robotics and Formal Methods. I have experience as a software engineer from my time with Samsung Research, Bangladesh. My research interests lie in designing intelligent deep models and applying them in various paradigms. I have a keen interest in using deep learning to improve reinforcement learning systems. 

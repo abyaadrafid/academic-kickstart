@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Homepage | Rafid</title>
+    <link>http://localhost:1313/authors/</link>
+      <atom:link href="http://localhost:1313/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>http://localhost:1313/img/icon-192.png</url>
+      <title>Authors</title>
+      <link>http://localhost:1313/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/authors/admin/</guid>
+      <description>&lt;p&gt;I am a masters student at &lt;a href=&#34;https://in.tum.de&#34;&gt;TUM&lt;/a&gt;, focusing on Machine Learning, Robotics and Software Engineering. My research interests lie in designing intelligent deep models and applying them in various paradigms. I have a keen interest in using deep learning to improve reinforcement learning systems.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Vision | Homepage | Rafid</title>
+    <link>http://localhost:1313/tags/computer-vision/</link>
+      <atom:link href="http://localhost:1313/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computer Vision</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 25 Dec 2019 00:00:00 +0600</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/img/icon-192.png</url>
+      <title>Computer Vision</title>
+      <link>http://localhost:1313/tags/computer-vision/</link>
+    </image>
+    
+    <item>
+      <title>Aerial Cactus Identification</title>
+      <link>http://localhost:1313/project/acic/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/acic/</guid>
+      <description>&lt;p&gt;This was one my of very first competitions. While doing &lt;a href=&#34;https://course.fast.ai/&#34;&gt;Practical Deep Learning for Coders&lt;/a&gt;, this competition provided a good source of practise. It was a binary classification problem. The goal for this competition was to determine whether the given satellite image contained a columnur cactus.&lt;/p&gt;
+&lt;p&gt;I used this dataset for two purposes :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;To implement and test &lt;a href=&#34;https://arxiv.org/pdf/1801.07698.pdf&#34;&gt;ArcFace&lt;/a&gt; using pytorch.&lt;/li&gt;
+&lt;li&gt;To get placed into a high LeaderBoard position in the competition using FastAI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;approach&#34;&gt;Approach&lt;/h2&gt;
+&lt;h3 id=&#34;eda&#34;&gt;EDA&lt;/h3&gt;
+&lt;p&gt;According to the dataset details, the images were taken from the air. The images are low-res, some of them rotated to arbitrary angles and some zoomed. From visual inspection, the cacti are somewhat easy to spot because of their unique texture and stick-like shape. The class imbalance is not severe, can be handled by data augmentation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;data_print.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;data-split-and-transforms&#34;&gt;Data split and Transforms&lt;/h3&gt;
+&lt;h4 id=&#34;split&#34;&gt;Split&lt;/h4&gt;
+&lt;p&gt;As the class imbalance was not servere, the data could be split into train/valid set at random.&lt;/p&gt;
+&lt;h4 id=&#34;transforms&#34;&gt;Transforms&lt;/h4&gt;
+&lt;p&gt;Following Transforms were applied with 75% probability to augment the data, then the images were resized to 128*128. Test time augmentation was not applied.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Horizontal Flip&lt;/li&gt;
+&lt;li&gt;Vertical Flip&lt;/li&gt;
+&lt;li&gt;Left and Right rotation upto 10°&lt;/li&gt;
+&lt;li&gt;Upto 110% zoom&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;hyperparameters&#34;&gt;Hyperparameters&lt;/h3&gt;
+&lt;h4 id=&#34;arcface&#34;&gt;ArcFace&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;s = 64&lt;/li&gt;
+&lt;li&gt;m = 0.0&lt;/li&gt;
+&lt;li&gt;Adam Optimizer with fixed lr = 1e-3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;competition-classifiers&#34;&gt;Competition Classifiers&lt;/h4&gt;
+&lt;h5 id=&#34;densenet169&#34;&gt;Densenet169&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Frozen model, Adam optimizer with maximum lr = 7.5e-3.&lt;/li&gt;
+&lt;li&gt;CyclirLR scheduler&lt;/li&gt;
+&lt;li&gt;Unfrozen model, Adam optimizer with maximum lr = 1e-6.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;resnet101&#34;&gt;Resnet101&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Frozen model, Adam optimizer with maximum lr = 9e-3.&lt;/li&gt;
+&lt;li&gt;CyclirLR scheduler&lt;/li&gt;
+&lt;li&gt;Unfrozen model, Adam optimizer with maximum lr = 1e-6.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;model-performance&#34;&gt;Model Performance&lt;/h3&gt;
+&lt;p&gt;I used DenseNet169 and Resnet101 for Leaderboard and ArcFace for research purposes.&lt;/p&gt;
+&lt;h3 id=&#34;arcface-1&#34;&gt;ArcFace&lt;/h3&gt;
+&lt;p&gt;ArcFace was applied on the Resnet101 backbone. Implemented from scratch in pytorch. With embedding dimension = 2048 and scale_factor (s) = 64, accuracy follows :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;arcface.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Further experimentation using additional linear layers can boost the results. Then again, this approach is designed for one-shot learning. Worse performance in Binary Classification is quite understandable.&lt;/p&gt;
+&lt;h4 id=&#34;densenet169-1&#34;&gt;DenseNet169&lt;/h4&gt;
+&lt;p&gt;Densenet169 needs more time to converge because of its enormous size and paramters.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;epoch&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;train_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;valid_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;error_rate&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.059754&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.004154&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.062731&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000837&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.019187&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.003954&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.009922&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000457&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.004491&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000055&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;resnet101-1&#34;&gt;Resnet101&lt;/h4&gt;
+&lt;p&gt;Resnet101 needed less time to converge.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;epoch&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;train_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;valid_loss&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;error_rate&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.063169&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.033260&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.011429&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.988571&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:17&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.034835&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002770&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.024171&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002123&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.014281&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.006416&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.005714&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.994286&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:14&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.006923&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.002465&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1.000000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;01:13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;competition-standings&#34;&gt;Competition Standings&lt;/h2&gt;
+&lt;p&gt;My models acheived perfect accuracy score in the public leaderboard.&lt;/p&gt;
+&lt;form action=&#34;https://github.com/abyaadrafid/Aerial-Cactus-Identification&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>APTOS Blindness Detection</title>
+      <link>http://localhost:1313/project/aptos/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/aptos/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/APTOS-Blindness-Detection&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Computer Vision 101</title>
+      <link>http://localhost:1313/project/f360/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/f360/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Fruits-360&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Facial Expression Recognition</title>
+      <link>http://localhost:1313/project/ferm/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/ferm/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Face-Expression-Recognition&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Recursion Cellular Image Classification</title>
+      <link>http://localhost:1313/project/rcic/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/rcic/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Recursion-Cellular-Image-Classification&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>SIIM-ACR Pneumothorax Segmentation</title>
+      <link>http://localhost:1313/project/siim-acr/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/siim-acr/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/SIIM-ACR-Pneumothorax-Segmentation&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tabular vs Vision Models</title>
+      <link>http://localhost:1313/project/dmnist/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0600</pubDate>
+      <guid>http://localhost:1313/project/dmnist/</guid>
+      <description>&lt;form action=&#34;https://github.com/abyaadrafid/Digits-MNIST&#34;&gt;
+    &lt;input type=&#34;submit&#34; formtarget = &#34;_blank&#34; value=&#34;Github Repo&#34; /&gt;
+&lt;/form&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

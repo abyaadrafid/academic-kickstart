@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://localhost:1313/project/a3c/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/dqn/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/ddqn/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/duellingdqn/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/d3qn/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/policy-gradient/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/reinforce/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/sac/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/valueac/</loc>
+    <lastmod>2020-05-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/acic/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/aptos/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/computer-vision/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/f360/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/ferm/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/natural-language-processing/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/qiqc/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/rcic/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/siim-acr/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/tabular-model/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/project/dmnist/</loc>
+    <lastmod>2019-12-25T00:00:00+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/publication/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/talk/</loc>
+  </url>
+  
+</urlset>

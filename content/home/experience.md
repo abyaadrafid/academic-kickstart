@@ -43,7 +43,7 @@ date_format = "Jan 2006"
   description = """
   Contributions :
 
-  * Developing a Unix host from scratch using only system calls.
+  * Developing a Unix host from scratch using socket programming.
   * Developing a GNOME-like terminal for the Unix Host.
   """
 
