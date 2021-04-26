@@ -27,22 +27,82 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
-In this post, we will be looking at the paper [PnPNet: End-to-End Perception and Prediction with Tracking in the Loop](https://arxiv.org/abs/2005.14711), by *Liang et al.*,  which was published in CVPR 2020 [[1]](http://localhost:1313/post/pnpnet/#1). After discuss our task and discussing some related research in this field, we will be looking at the methodology of the paper. Then we will analyze the quantative results and have a look at the qualitative results. Finally, we will finish it off with some remarks and possible ideas for extension.
+In this post, we will be looking at the paper [PnPNet: End-to-End Perception and Prediction with Tracking in the Loop](https://arxiv.org/abs/2005.14711), by *Liang et al.*,  which was published in CVPR 2020 [[1]](http://abyaadrafid.github.io/post/pnpnet/#1). After defining our task and discussing some related research in this field, we will be looking at the methodology of the paper. Then we will analyze the quantative results and have a look at the qualitative results. Finally, we will finish it off with some remarks and possible ideas for extension.
 
 # Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida dignissim suscipit. Integer quis faucibus felis. Pellentesque consectetur tellus odio, ornare ultrices massa ultrices nec. Nam sit amet tincidunt eros. Phasellus id posuere est. Sed accumsan accumsan risus vel posuere. Morbi at nibh ultricies, ultrices nisi non, congue nisl. Phasellus rhoncus ligula vel sem iaculis, sed bibendum lectus commodo. Fusce in aliquam tortor. Ut iaculis sapien enim, non mollis lectus cursus vitae. Aenean dictum ex at arcu volutpat elementum. Ut in elit molestie, convallis mauris id, mollis felis. Ut mattis leo non elit fermentum, vel interdum massa faucibus. Maecenas elit nibh, luctus ut massa sit amet, efficitur ornare magna.
+In the context of self-driving vehicles, predicting the motion of other vehicles is a critical task. Approximating the trajectory of neighboring agents in the future is equally as important as detecting them in the current time frame. To do this task, so far three paradigms have been proposed.
 
-Curabitur viverra, mi eu vestibulum cursus, tellus nibh lobortis ex, at congue felis ante in ante. Aliquam erat volutpat. Nulla facilisi. Sed id gravida est. Aliquam sem enim, rutrum ac rutrum id, pharetra quis sapien. Quisque malesuada lacus eget tortor pharetra ullamcorper. Integer non metus eros. Curabitur ornare efficitur sollicitudin. Nullam pharetra nisl sed leo scelerisque, ut cursus turpis fermentum.
 
-Aliquam id convallis lorem, vehicula fringilla nisl. Sed euismod porttitor tempor. Vivamus at tortor quis ex faucibus ullamcorper sit amet a orci. Nullam nisi metus, rutrum at urna quis, lobortis venenatis orci. Nunc mollis lacus tortor, vitae pharetra dolor suscipit vitae. Praesent nec malesuada purus. Duis id magna eu lacus elementum faucibus.
+The first divides this problem into three separate sub-tasks, which are handled by completely independent sub-systems. These three tasks, namely, object detection, object tracking, and motion forecasting are done sequentially. As they are developed separately, they need more computing power and cannot correct mistakes from upstream tasks. The second paradigm  tries to solve the detection and prediction task with a single neural network. This yields more efficient computation but these models suffer from limited use of temporal history and are vulnerable to occlusion.
 
-Quisque scelerisque lectus dui. Fusce id ipsum sit amet ante consectetur consequat et ut justo. Mauris orci elit, sagittis in posuere vitae, euismod dignissim diam. Nulla ac velit pellentesque, gravida arcu tristique, feugiat elit. Quisque ultricies ut est non imperdiet. Vivamus blandit luctus ligula sagittis consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut eu velit ac sapien convallis luctus.
+![image](autonomy_stacks.png)
+<figcaption>
 
-Proin ornare non enim at dapibus. Aliquam erat volutpat. Aenean malesuada pharetra lacus, euismod suscipit mauris gravida quis. Morbi id pulvinar libero. Pellentesque imperdiet dignissim gravida. Morbi commodo augue non dolor lacinia aliquam. Nulla erat lorem, aliquam nec lacinia eu, efficitur in lacus.
+Three paradigms of perception and prediction problems [[1]](http://abyaadrafid.github.io/post/pnpnet/#1)
+
+</figcaption>
+
+This paper introduces the new third paradigm. It argues that, for sequential modeling tasks such as motion forecasting, past data is very important. To that end, it proposes PnPNet which combines multi-object tracking with joint perception and prediction models. We will go into the details of the model after discussing some other works that try to tackle different aspects of our problem.
 
 # Related works
 
+### 3D object detection
+
+The use of depth sensors such as LiDARs have been shown to have better performance [[2]](http://abyaadrafid.github.io/post/pnpnet/#2) than cameras for 3D detection. Some works also explore a fusion of LiDAR point clouds and camera inputs [[3]](http://abyaadrafid.github.io/post/pnpnet/#3).
+![image](fusion_model.png)
+<figcaption>
+
+A qualitative result of fusion models [[3]](http://abyaadrafid.github.io/post/pnpnet/#3)
+
+</figcaption>
+
+### Multi-Object Tracking
+
+Multi-Object tracking is a system to track multiple objects at the same time. It consists of a discrete data association problem and a continuous trajectory estimation problem [[4]](http://abyaadrafid.github.io/post/pnpnet/#4). There have been efforts to handle occulsions with hand crafted heuristics [[5]](http://abyaadrafid.github.io/post/pnpnet/#5) and single object tracking [[6]](http://abyaadrafid.github.io/post/pnpnet/#6) to handle occulsion. To handle the trajectory problem, some approaches also use sensor features but only use upto 3 seconds of temporal history [[7]](http://abyaadrafid.github.io/post/pnpnet/#7).
+
+![image](multi-object_tracking.png)
+
+<figcaption>
+
+An example of multi-object tracking takes from [[8]](http://abyaadrafid.github.io/post/pnpnet/#8)
+
+</figcaption>
+
+### Motion Forecasting
+
+### Joint models for Perception and Prediction
+
+# References
+
 <div id="1">
 [1] Ming Liang, Bin Yang, Wenyuan Zeng, Yun Chen, Rui Hu, Sergio Casas, Raquel Urtasun, "PnPNet: End-to-End Perception and Prediction with Tracking in the Loop", in CVPR, 2020.
+</div>
+
+<div id="2">
+[2] Bin Yang, Wenjie Luo, and Raquel Urtasun. Pixor: Realtime 3d object detection from point clouds. In CVPR, 2018.
+</div>
+
+<div id="3">
+[3] Ming Liang, Bin Yang, Shenlong Wang, and Raquel Urtasun. Deep continuous fusion for multi-sensor 3d object detection. In ECCV, 2018.
+</div>
+
+<div id="4">
+[4] Anton Milan, Konrad Schindler, and Stefan Roth. Multitarget tracking by discrete-continuous energy minimization. TPAMI, 38(10):2054–2068, 2015
+</div>
+
+<div id="5">
+Hasith Karunasekera, Han Wang, and Handuo Zhang. Multiple object tracking with attention to appearance, structure, motion and size. IEEE Access 7:104423–104434, 2019.
+</div>
+
+<div id="6"> 
+Peng Chu and Haibin Ling. Famnet: Joint learning of feature, affinity and multi-dimensional assignment for online multiple object tracking. In ICCV, 2019.
+</div>
+
+<div id ="7">
+Wenwei Zhang, Hui Zhou, Shuyang Sun, Zhe Wang, Jianping Shi, and Chen Change Loy. Robust multi-modality multi-object tracking. In ICCV, 2019.
+</div>
+
+<div id="8">
+Michael D Breitenstein, Fabian Reichlin, Bastian Leibe, Esther Koller-Meier, and Luc Van Gool. Online multiperson tracking-by-detection from a single, uncalibrated camera. TPAMI, 33(9):1820–1833, 2010.
 </div>
