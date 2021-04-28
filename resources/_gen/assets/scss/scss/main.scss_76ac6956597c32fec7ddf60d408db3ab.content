@@ -7898,7 +7898,7 @@ article {
   animation-delay: 0.15s; }
 
 .article-container {
-  max-width: 760px;
+  max-width: 800px;
   padding: 0 20px 0 20px;
   margin: 0 auto 0 auto; }
 
