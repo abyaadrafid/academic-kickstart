@@ -119,6 +119,8 @@ Workflow of the 3D detection module
 
 ### Discrete-Continuous Tracking module
 
+As discussed in the related works, there are two separate challenges in multi-object tracking. Previous works mostly focus on the discrete problem of data association but PnPNet also takes the continuous problem of trajectory estimation into account. The paper argues that it helps to prevent association errors from accumulating over time and reduces the variance in motion history. To that end, it proposes a two stage tracking framework. To use the framework, rich and concise trajectory level object representation need to be learned. 
+
 ![image](trackingrep.png)
 <figcaption>
 
@@ -126,13 +128,53 @@ Trajectory level representation generation
 
 </figcaption>
 
+The representation learning problem is formulated as a sequence modelling problem. We use the intermediate FEV features from the backbone network and the location information of each object at time t to run a Bilinear Interpolation. This output is regarded as the representation of motion of each object from the start frame to the current frame. Along with this, the absolute velocities of each object is passed into an MLP/feed-forward network. The merged features from this FF network is then used as the sequential input for our LSTM. This LSTM hidden state is our trajectory level representation at each time step.
+
 #### Data Association
 
+First stage of the tracking framework is the discrete tracker. At time t, given N<sub>t</sub> detections and M<sub>t-1</sub> trajectories, it tries to determine the associations between them. This association problem is formulated as a bipartite graph matching problem. As a result, a one-to-one matching is guaranteed. The edge values for our bipartite matching problem are the affinity values, which represent how likely is a track M<sub>t-1</sub> to belong to detection N<sub>t</sub>. The affinity matrix :
+$$
+ C_{i,j} =
+    \begin{cases}
+      MLP_{pair}(f(D_{i}^t); h(P_{j}^{t−1})) & if\ 1 ≤ j ≤ M_{t−1}\\\\
+      MLP_{unary}(f(D_{i}^t)) & if\ j = M_{t−1} + i \\\\
+      −inf & otherwise \\\\
+    \end{cases}       
+$$
+The affinity values are calculated with binary or unary MLPs. If we have more or equal number of tracks at the previous step than detections at this step, we use the binary MLP. Otherwise the unary MLP is used. This bipartite system is solved optimally using the Hungarian algorithm. We use single object tracking for older unmatched tracks. Combining results from bipartite matching and SOT yields a final set of tracks P<sub>t</sub>.
+
 ##### Single object tracking
+The single object tracker used in the PnPNet paper follows nearly the same methodology as the Siamese tracker [[14]](#14). The Siamese tracker has two networks. One of these twin networks receive an exemplar image as input, other one receives a search image as input. The task for the twin network is to try and find the exemplar image within the search image.
+
 ![image](sot.png)
+<figcaption>
+
+Siamese tracker from [[14]](#14).
+
+</figcaption>
+
+Siamese trackers usually have a cross-correlation layer at the end. PnPNet chooses to replace this layer with an MLP with learnable parameters.
 
 ##### Hungarian Algorithm
 
+The Hungarian algorithm is an optimization algorithm that produces the best one-to-one matching when applied to a bipartite graph. In our context, two sets of nodes are the detections and the tracks, denoted as **N** and **M** respectively. The edges between these sets of nodes are the affinity values, denoted by **a**. Here we see an example formulation :
+
+```mermaid
+graph TD;
+id1(("N<sub>1</sub>"))-- "a<sub>1</sub>" ---id2(("M<sub>1</sub>"));
+id1(("N<sub>1</sub>"))-- "a<sub>4</sub>" ---id3(("M<sub>2</sub>"));
+id1(("N<sub>1</sub>"))-- "a<sub>7</sub>" ---id4(("M<sub>3</sub>"));
+
+id6(("N<sub>2</sub>"))-- "a<sub>2</sub>" ---id2(("M<sub>1</sub>"));
+id6(("N<sub>2</sub>"))-- "a<sub>5</sub>" ---id3(("M<sub>2</sub>"));
+id6(("N<sub>2</sub>"))-- "a<sub>8</sub>" ---id4(("M<sub>3</sub>"));
+
+id7(("N<sub>3</sub>"))-- "a<sub>3</sub>" ---id2(("M<sub>1</sub>"));
+id7(("N<sub>3</sub>"))-- "a<sub>6</sub>" ---id3(("M<sub>2</sub>"));
+id7(("N<sub>3</sub>"))-- "a<sub>9</sub>" ---id4(("M<sub>3</sub>"));
+```
+
+Hungarian algorithm will find the best matching that maximizes the overall affinity value throughout the graph.
 
 #### Trajectory Estimation
 
@@ -213,6 +255,10 @@ Trajectory level representation generation
 [12] Wenjie Luo, Bin Yang, and Raquel Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. In CVPR, 2018.
 </p>
 
-<p id=13>
+<p id="13">
 [13] Wenyuan Zeng, Wenjie Luo, Simon Suo, Abbas Sadat, Bin Yang, Sergio Casas, and Raquel Urtasun. End-to-end interpretable neural motion planner. In CVPR, 2019.
+</p>
+
+<p id="14">
+[14]  Luca Bertinetto, Jack Valmadre, Joao F Henriques, Andrea Vedaldi, and Philip HS Torr. Fully-convolutional siamese networks for object tracking. In ECCV, 2016.
 </p>
