@@ -286,8 +286,7 @@ From the results of the studies, it is obvious that the tracking module has the 
 
 Well, these explanations are good and all but, where are the tangible results? Let's look at the visualization of perception and prediction results on ATG4D. This demonstrates that by learning trajectory representations explicitly, PnPNet is able to handle occlusion and produces robust predictions.
 
-![image](quali.gif)
-
+{{< video src="qual.mp4" controls="yes" >}}
 
 <figcaption>
 
