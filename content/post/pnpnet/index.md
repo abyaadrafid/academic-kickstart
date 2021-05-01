@@ -198,11 +198,17 @@ To train PnPNet end-to-end, a multi-task loss is calculated from the individual 
 $$
   L = L_{detect}+ L_{track} + L_{predict}
 $$
-Here the detection loss is the cross entropy loss and the smoothed l<sub>1</sub> loss over bounding boxes. The tracking loss is again another multi task loss 
+Here the detection loss is the cross entropy loss and the smoothed l<sub>1</sub> loss over bounding boxes. The tracking loss is again another multi task loss defined as : 
 $$
   L_{track} = L_{score}^{affinity} + L_{score}^{sot} + L_{score}^{refine} + L_{reg}^{refine}
 $$
 The max-margin loss is applied on the sot scores, the trajectory scores, and the affinity matrix.
+$$
+  L_{score} = \frac{1}{N_{i,j}} \sum_{i \epsilon{pos}, j \epsilon{neg}} max(0, m − (a_i − a_j))
+$$
+Here N<sub>i,j</sub> is the total number of positive and negative pairs, where a<sub>i</sub> and a<sub>j</sub> are scores for positive and negative samples accordingly. 
+
+For prediction task the loss is just the smoothed l<sub>1</sub> loss of the predictions. 
 
 The Adam optimizer is used to train PnPNet with a frame rate of 10Hz. At each frame maximum M = 50 tracks and N = 50 detections are maintained. The prediction horizon is set $\Delta T$= 3 second with 0.5 seconds interval. 
 
@@ -234,16 +240,81 @@ Unlike predefined modular metrics, system metrics are defined by the PnPNet pape
 
 # Results
 
+In this section we look at the quantitative results, some ablation studies and some qualitative results on PnPnet. 
 ## Quantitative results
 
+### Detection and tracking
+
+The detection module is evaluated on nuScenes in comparison to other SOA detections. PnPnet outperforms leading model *Megvii*[[18]](#18) in most metrics. The tracking module is evaluated against the leading approach *StanfordIPRL-TRI*[[19]](#19) and a PnPNet baseline with KF tracker replacing the tracking module. PnPnet outperforms [[19]](#19) and KF tracker in MOT metrics. 
+
+![image](tracking.png)
+
+<figcaption>
+
+  Evaluation of multi object tracking on nuScenes [[1]](#1)
+
+</figcaption>
+
+Even though there are not many significant changes in the object detection module, PnPNet being an end-to-end model benefits this task too. Better prediction model also fine tunes the detection module. Improvements in the tracking model then influences prediction task. 
+
+### Perception and prediction
+
+PnPnet is evaluated on both nuScenes and ATG4D for end-to-end perception and prediction. The paper establishes a baseline by removing the tracking module and denotes it as "PnPnet w/o track". This implementation can be considered a re-implementation of [[12]](#12). The fast and furious (FAF)[[12]](#12) is the direct predecessor of PnPNet. Classic PnPNet outperforms this baseline consistently across both datasets and all metrics, illustrating that keeping tracking in the loop allows for massive improvements in all tasks. 
+![image](e2eresult.png)
+<figcaption>
+
+  End to end results on ATG4D and nuScenes [[1]](#1)
+
+</figcaption>
+
+PnPNet observes upto 4.4 and 2.3 percentage increase in average precision and maximum recall respectively. For the prediction task, ADE is decreased up to 20% and FDE up to 15%.
 
 ## Ablation studies
 
+Ablation studies are often conducted on end-to-end models to find out the individual contributions to the final result. PnPNet paper also conducts some ablation studies by removing motion features, sot, trajectory refinement and the whole track module one-by-one. 
+
+![image](ablation.png)
+<figcaption>
+
+  Ablation studies on PnPNet [[1]](#1)
+
+</figcaption>
+
+From the results of the studies it is obvious that the tracking module has the largest effect on the prediction results. ADE and FDE go up to 18% percent in the absence of the tracking module. Trajectory rescore module influences average precision and displacement errors. Single object tracking module has a decent contribution across all the metrics. 
 
 ## Qualitative Results
 
+Well, these explanations are good and all but, where are the tangible results? Let's look at the visualization of perception and prediction results on ATG4D. This demonstrates that by learning trajectory representations explicitly, PnPNet is able to handle occlusion and produces robust predictions.
+
+![image](quali.gif)
+
+
+<figcaption>
+
+  Qualitative results of  [[1]](#1)
+  
+</figcaption>
+
+This video was taken from the CVF youtube channel. The original video was the presentation for the PnPNet paper, which can be found [here](https://www.youtube.com/watch?v=3dsXqhICdI8&ab_channel=ComputerVisionFoundationVideos).
+
 
 # Summary
+
+Earlier works in the realm of perception and prediction of autonomous driving have somewhat overlooked the contribution of trajectory information for future predictions. Although recent works do capitalize on the use of joint models, they leave tracking out of the loop. Following the footstep of these recently developments, PnPNet proposes a novel end-to-end training framework for perception and prediction while taking tracking into consideration. They also introduce a new tracking framework that can be looped into classic detection-prediction stacks. Their proposed improvements are then validated on different datasets and compared with other leading models in this paradigm. Finally they show significant improvement in all three tasks as well as end-to-end performance.  
+
+## Personal Remarks
+
+#### Using other recurrent units
+
+PnPNet uses an LSTM unit in the tracking module. However, as we know LSTMs need quite a bit of computation resources. In future works, other less expensive recurrent units can be explored for the same task. For example, GRU units [[20]](#20) are computationally less expensive and have been proven to be comparable in terms of performance [[21]](#21).
+
+#### Attention mechanism 
+
+Recently many sequence modelling tasks are leveraging the attention mechanism. As we define our tracking as a sequential problem, it may be useful to apply self attention on top of the recurrent unit outputs. Although this is not a pure sequence problem, self-attention may refine and provide importance to better trajectory features. Also built-in attention [[22]](#22) can be applied to the 2D-Convolational backbone of the 3D detection algorithm.
+
+#### Excerpts form the Q&A
+
+In the paper, authors limit the number of detection and tracks to maximum of 50. But the PnPNet considers distances up to 100 meters. But, in busy roads usually far more moving objects. Only way for PnPNet to consider this is increase the *N* and *M* parameters. However, this again results in a massive number of computations for the Hungarian algorithm. The paper doesn't realistically take this problem into account. Perhaps there could be more research in the tracking module so that the computation does not increase in the magnitude of NxM.
 
 # References
 
@@ -301,4 +372,36 @@ Unlike predefined modular metrics, system metrics are defined by the PnPNet pape
 
 <p id="14">
 [14]  Luca Bertinetto, Jack Valmadre, Joao F Henriques, Andrea Vedaldi, and Philip HS Torr. Fully-convolutional siamese networks for object tracking. In ECCV, 2016.
+</p>
+
+<p id="15">
+[15] Holger Caesar, Varun Bankiti, Alex H. Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu, Anush Krishnan, Yu Pan, Giancarlo Baldan, and Oscar Beijbom. nuscenes: A multimodal dataset for autonomous driving. In CVPR, 2020.
+</p>
+
+<p id="16">
+[16] Bin Yang, Wenjie Luo, and Raquel Urtasun. Pixor: Realtime 3d object detection from point clouds. In CVPR, 2018.
+</p>
+
+<p id = "17">
+[17] Keni Bernardin, Alexander Elbs, and Rainer Stiefelhagen. Multiple object tracking performance metrics and evaluation in a smart room environment. In Sixth IEEE International Workshop on Visual Surveillance, in conjunction with ECCV, 2006. 
+<p>
+
+<p id="18">
+[18] Benjin Zhu, Zhengkai Jiang, Xiangxin Zhou, Zeming Li, and Gang Yu. Class-balanced grouping and sampling for point cloud 3d object detection. arXiv preprint arXiv:1908.09492, 2019
+</p>
+
+<p id="19">
+[19] Hsu-kuang Chiu, Antonio Prioletti, Jie Li, and Jeannette Bohg. Probabilistic 3d multi-object tracking for autonomous driving. arXiv preprint arXiv:2001.05673, 2020.
+</p>
+
+<p id="20">
+[20] Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk, Yoshua Bengio. Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation, In EMNLP 2014.
+</p>
+
+<p id="21">
+[21] Junyoung Chung, Caglar Gulcehre, KyungHyun Cho, Yoshua Bengio. Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling. In NIPS 2014 Deep Learning and Representation Learning Workshop.
+</p>
+
+<p id="22">
+[22] Niamul Quader, Md Mafijul Islam Bhuiyan, Juwei Lu, Peng Dai,and Wei Li. Weight Excitation: Built-in Attention Mechanisms in Convolutional Neural Networks. In ECCV 2020.
 </p>
