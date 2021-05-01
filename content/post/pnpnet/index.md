@@ -17,7 +17,7 @@ draft: false
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
-  focal_point: "Center"
+  focal_point: "Smart"
   preview_only: false
 
 # Projects (optional).
@@ -92,7 +92,7 @@ The discussed related research overlook an important aspect of our problem. The 
   1. It introduces a new trajectory representation based on a sequence of detections through time.
   2. It proposes a multi-object tracker that solves both the association and the trajectory estimation problem.
 
-## Model Overview
+# Model Overview
 
 PnPNet consists of three separate modules :
 1. 3D Object detection module
@@ -106,7 +106,7 @@ A summary of PnPNet workflow [[1]](#1)
 
 </figcaption>
 
-### 3D Object detection module
+## 3D Object detection module
 
 The detection module takes multi-sweep LiDAR point cloud representation in bird-eye-view and an HD map as input. Optionally, geometric and semantic information of the HD map can also be used. 2D convolutional neural network based backbone is applied to the input, which generates the intermediate BEV features that will be used in downstream tasks. A convolutional detection header is then used on the intermediate features to create dense object detections at each time step.
 
@@ -117,7 +117,7 @@ Workflow of the 3D detection module
 
 </figcaption>
 
-### Discrete-Continuous Tracking module
+## Discrete-Continuous Tracking module
 
 As discussed in the related works, there are two separate challenges in multi-object tracking. Previous works mostly focus on the discrete problem of data association but PnPNet also takes the continuous problem of trajectory estimation into account. The paper argues that it helps to prevent association errors from accumulating over time and reduces the variance in motion history. To that end, it proposes a two stage tracking framework. To use the framework, rich and concise trajectory level object representation need to be learned. 
 
@@ -130,7 +130,7 @@ Trajectory level representation generation
 
 The representation learning problem is formulated as a sequence modelling problem. We use the intermediate FEV features from the backbone network and the location information of each object at time t to run a Bilinear Interpolation. This output is regarded as the representation of motion of each object from the start frame to the current frame. Along with this, the absolute velocities of each object is passed into an MLP/feed-forward network. The merged features from this FF network is then used as the sequential input for our LSTM. This LSTM hidden state is our trajectory level representation at each time step.
 
-#### Data Association
+### Data Association
 
 First stage of the tracking framework is the discrete tracker. At time t, given N<sub>t</sub> detections and M<sub>t-1</sub> trajectories, it tries to determine the associations between them. This association problem is formulated as a bipartite graph matching problem. As a result, a one-to-one matching is guaranteed. The edge values for our bipartite matching problem are the affinity values, which represent how likely is a track M<sub>t-1</sub> to belong to detection N<sub>t</sub>. The affinity matrix :
 $$
@@ -143,7 +143,7 @@ $$
 $$
 The affinity values are calculated with binary or unary MLPs. If we have more or equal number of tracks at the previous step than detections at this step, we use the binary MLP. Otherwise the unary MLP is used. This bipartite system is solved optimally using the Hungarian algorithm. We use single object tracking for older unmatched tracks. Combining results from bipartite matching and SOT yields a final set of tracks P<sub>t</sub>.
 
-##### Single object tracking
+#### Single object tracking
 The single object tracker used in the PnPNet paper follows nearly the same methodology as the Siamese tracker [[14]](#14). The Siamese tracker has two networks. One of these twin networks receive an exemplar image as input, other one receives a search image as input. The task for the twin network is to try and find the exemplar image within the search image.
 
 ![image](sot.png)
@@ -155,7 +155,7 @@ Siamese tracker from [[14]](#14).
 
 Siamese trackers usually have a cross-correlation layer at the end. PnPNet chooses to replace this layer with an MLP with learnable parameters.
 
-##### Hungarian Algorithm
+#### Hungarian Algorithm
 
 The Hungarian algorithm is an optimization algorithm that produces the best one-to-one matching when applied to a bipartite graph. In our context, two sets of nodes are the detections and the tracks, denoted as **N** and **M** respectively. The edges between these sets of nodes are the affinity values, denoted by **a**. Here we see an example formulation :
 
@@ -176,23 +176,63 @@ id7(("N<sub>3</sub>"))-- "a<sub>9</sub>" ---id4(("M<sub>3</sub>"));
 
 Hungarian algorithm will find the best matching that maximizes the overall affinity value throughout the graph.
 
-#### Trajectory Estimation
+### Trajectory Estimation
+
+Trajectory estimation is the second stage in our two stage tracking network. This module re-evaluates each object track for the new observation at current frame and helps minimize false positives and localization errors from upstream tasks. The LSTM representation is refined by an MLP according to the current association. The MLP outputs a confidence score and centre position offset. 
+$$
+  score_{i}, \Delta u_{i}^{t-T_0+1:t}, \Delta v_{i}^{t-T_0+1:t} = MLP_{refine}(h(P_{i}^t))
+$$
+Using these confidence scores, a non-maximal suppression is applied and only top M<sub>t</sub> tracks are accepted. Other tracks are discarded as false positives.
 
 
-### Motion Forecasting module
+## Motion Forecasting module
 
+Earlier joint perception and prediction models design the prediction module as another convolutional headers. However, PnPnet puts tracking on the detection backbone and creates object trajectory representation. This trajectory representation is then passed through an MLP to estimate motion prediction for each object we are tracking. 
+$$
+  \Delta u_{i}^{t:t+\Delta T}, \Delta v_{i}^{t:t+\Delta T} = MLP_{refine}(h(P_{i}^t))
+$$
+Here $\Delta T$ is a parameter of the model that denotes the prediction horizon. 
+## End-to-End Training
 
-### End-to-End Training
+To train PnPNet end-to-end, a multi-task loss is calculated from the individual losses of it's three modules. 
+$$
+  L = L_{detect}+ L_{track} + L_{predict}
+$$
+Here the detection loss is the cross entropy loss and the smoothed l<sub>1</sub> loss over bounding boxes. The tracking loss is again another multi task loss 
+$$
+  L_{track} = L_{score}^{affinity} + L_{score}^{sot} + L_{score}^{refine} + L_{reg}^{refine}
+$$
+The max-margin loss is applied on the sot scores, the trajectory scores, and the affinity matrix.
 
+The Adam optimizer is used to train PnPNet with a frame rate of 10Hz. At each frame maximum M = 50 tracks and N = 50 detections are maintained. The prediction horizon is set $\Delta T$= 3 second with 0.5 seconds interval. 
+
+# Datasets and Metrics
+
+The PnPNet paper tests itself on two major driving datasets. The performance of PnPNet is measured from modular metrics of detection and tracking, as well as from system metrics for end-to-end perception and prediction.
+
+### nuScenes Dataset [[15]](#15)
+
+This dataset consists of 1000 20-seconds long log snippets with LiDAR sweeps and 3D labels for objects and corresponding HD maps. Although this dataset has some caveats because it only has 84 unique driving journeys, and 63.5% of the cars are parked.
+
+![image](nuScenes.png)
+
+<figcaption>
+
+  An example from nuScences [[15]](#15)
+
+</figcaption>
+
+### ATG4D Dataset [[16]](#16)
+
+To simulate real world driving scenario, the authors validate PnPNet on ATG4D dataset. It contains over 5000 log snippet of 1000 unique journeys. Each snippet with LiDAR sweeps and HD maps. Also only 48.1% of the cars are parked. 
+### Modular Metrics
+
+For detection and tracking tasks, PnPNet follows tracking metrics introduced by nuScenes [[15]](#15). Detection task is measured in terms of average precision (AP) and tracking task in terms of MOT metrics, defined by *Bernardin et al.*[[17]](#17).
+### System Metrics
+
+Unlike predefined modular metrics, system metrics are defined by the PnPNet paper itself. For perception task, average precision and maximum recall is used. For the prediction task, PnPNet uses average displacement error (ADE) and final displacement error (FDE). Both of these displacement errors are measured over 3 second, with ADE over 0.5 second interval. Displacement error is simply the difference between the actual and the predicted location of an object. 
 
 # Results
-
-
-## Datasets
-
-
-## Metrics
-
 
 ## Quantitative results
 
