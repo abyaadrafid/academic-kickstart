@@ -34,7 +34,7 @@ In this post, we will be looking at the paper [PnPNet: End-to-End Perception and
 In the context of self-driving vehicles, predicting the motion of other vehicles is a critical task. Approximating the trajectory of neighboring agents in the future is equally as important as detecting them in the current time frame. To do this task, so far three paradigms have been proposed.
 
 
-The first divide this problem into three separate sub-tasks, which are handled by completely independent sub-systems. These three tasks, namely, object detection, object tracking, and motion forecasting are done sequentially. As they are developed separately, they need more computing power and cannot correct mistakes from upstream tasks. The second paradigm tries to solve the detection and prediction task with a single neural network. This yields more efficient computation but these models suffer from limited use of temporal history and are vulnerable to occlusion.
+The first one divides this problem into three separate sub-tasks, which are handled by completely independent sub-systems. These three tasks, namely, object detection, object tracking, and motion forecasting are done sequentially. As they are developed separately, they need more computing power and cannot correct mistakes from upstream tasks. The second paradigm tries to solve the detection and prediction task with a single neural network. This yields more efficient computation but these models suffer from limited use of temporal history and are vulnerable to occlusion.
 
 ![image](autonomy_stacks.png)
 <figcaption>
@@ -90,7 +90,7 @@ Research efforts in this sector have developed the field of autonomous driving a
 
 Although earlier joint models for perception and prediction use sensor information, they do not exploit the salient features of actors in the time dimension. As a result, their overall performance might be vastly improved with some adjustments. 
 
-As we will see, PnPNet does exactly that. Where earlier models kept the tracking task at the end of the task stack, PnPNet pulls it inside the perception-prediction loop. By doing that, it can utilize trajectory-level representation and can improve performance in all related tasks. It also solves the discrete-continuous tracking problem that other works overlook with a novel tracking framework. PnPNet deviates from the common approach of [[2]](#2) and directly uses perception features for better scene contexts.
+As we will see, PnPNet does exactly that. Where earlier models kept the tracking task at the end of the task stack, PnPNet pulls it inside the perception-prediction loop. By doing that, it can utilize trajectory-level representation and can improve performance in all related tasks. It also solves the discrete-continuous tracking problem that other works overlook, with a novel tracking framework. PnPNet deviates from the common approach of [[2]](#2) and directly uses perception features for better scene contexts.
 
 # Proposed method: PnPNet
 
@@ -174,7 +174,7 @@ Siamese trackers usually have a cross-correlation layer at the end. PnPNet choos
 
 #### Hungarian Algorithm
 
-The Hungarian algorithm is an optimization algorithm that produces the best one-to-one matching when applied to a bipartite graph. In our context, two sets of nodes are the detections and the tracks, denoted as **N** and **M** respectively. The edges between these sets of nodes are the affinity values, denoted by **a**. Here we see an example formulation :
+The Hungarian algorithm is an optimization algorithm that produces the best one-to-one matching when applied to a bipartite graph. In our context, two sets of nodes are the detections and the tracks, denoted as **N<sub>i</sub>** and **M<sub>j</sub>** respectively. The edges between these sets of nodes are the affinity values, denoted by **a<sub>k</sub>**. Here we see an example formulation :
 
 ```mermaid
 graph TD;
@@ -255,7 +255,7 @@ The PnPNet paper tests itself on two major driving datasets. The performance of 
 
 ### nuScenes Dataset [[15]](#15)
 
-This dataset consists of 1000 20-seconds long log snippets with LiDAR sweeps and 3D labels for objects and corresponding HD maps. Although this dataset has some caveats because it only has 84 unique driving journeys, and 63.5% of the cars are parked.
+This dataset consists of 1000 20-seconds long log snippets with LiDAR sweeps at 20Hz and 3D labels for objects and corresponding HD maps. Although this dataset has some caveats because it only has 84 unique driving journeys, and 63.5% of the cars are parked.
 
 ![image](nuScenes.png)
 
@@ -267,7 +267,7 @@ This dataset consists of 1000 20-seconds long log snippets with LiDAR sweeps and
 
 ### ATG4D Dataset [[16]](#16)
 
-To simulate real-world driving scenario, the authors validate PnPNet on the ATG4D dataset. It contains over 5000 log snippets of 1000 unique journeys. Each snippet with LiDAR sweeps and HD maps. Also, only 48.1% of the cars are parked. 
+To simulate real-world driving scenario, the authors validate PnPNet on the ATG4D dataset. It contains over 5000 log snippets of 1000 unique journeys. Each snippet consists of 64 beam LiDAR sweeps at 10Hz and the corresponding HD maps. Also, only 48.1% of the cars are parked. 
 ### Modular Metrics
 
 For detection and tracking tasks, PnPNet follows tracking metrics introduced by nuScenes [[15]](#15). Detection task is measured in terms of average precision (AP) and tracking task in terms of MOT metrics, defined by *Bernardin et al.*[[17]](#17).
@@ -308,7 +308,7 @@ PnPNet observes up to 4.4 and 2.3 percentage increase in average precision and m
 
 ## Ablation studies
 
-Ablation studies are often conducted on end-to-end models to find out the individual contributions to the final result. PnPNet paper also conducts some ablation studies by removing motion features, sot, trajectory refinement, and the whole track module one byone. 
+Ablation studies are often conducted on end-to-end models to find out the individual contributions to the final result. PnPNet paper also conducts some ablation studies by removing motion features, sot, trajectory refinement, and the whole track module one by one. 
 
 ![image](ablation.png)
 <figcaption>
@@ -321,7 +321,7 @@ From the results of the studies, it is obvious that the tracking module has the 
 
 ## Qualitative Results
 
-Well, these explanations are good and all but, where are the tangible results? Let's look at the visualization of perception and prediction results on ATG4D. This demonstrates that by learning trajectory representations explicitly, PnPNet is able to handle occlusion and produces robust predictions.
+Well, these explanations are good and all but, where are the tangible results? Let's look at the visualization of perception and prediction results on ATG4D. This demonstrates the fact that by learning trajectory representations explicitly, PnPNet is able to handle occlusion and produces robust predictions.
 
 {{< video src="qual.mp4" controls="yes" >}}
 
